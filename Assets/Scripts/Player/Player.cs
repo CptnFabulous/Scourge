@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float jumpHeight = 8f;
     public float groundDistance = 10f;
     public bool isGrounded;
+    public int jumpCount = 1;
     public Rigidbody rigid;
     public Vector3 Velocity = Vector3.zero;
    
@@ -20,13 +21,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Movement();
 
         if (groundDistance <= 1)
         {
             isGrounded = true;
         }
         else { isGrounded = false; }
-
+        if (isGrounded == true)
+        {
+            jumpCount = 1;
+        }
         // cap velocity at 4 or -4 for X and Z, cap at 10 or -10 for Y
 
         //Vector3 clampX = rigid.velocity;
@@ -42,8 +47,7 @@ public class Player : MonoBehaviour
         //Mathf.Clamp(rigid.velocity.x, 0, maxVelocity.x);
         //Mathf.Clamp(rigid.velocity.y, 0, maxVelocity.y);
         //Mathf.Clamp(rigid.velocity.z, 0, maxVelocity.z);
-        Movement();
-
+       
 
         //  Vector3 fallingSpeed = rigid.velocity.normalized * jumpHeight;
       
@@ -54,10 +58,12 @@ public class Player : MonoBehaviour
     }
     void Movement()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
         {
+            jumpCount--;
             Mathf.Clamp(transform.up.normalized.y, 0, jumpHeight);
             rigid.AddForce(transform.up.normalized * jumpHeight, ForceMode.Impulse);
+            
         }
         // W
         // add impulse force to transform.forward aslong as the rigidbody.velocity.z is under 4 and W is pressed
