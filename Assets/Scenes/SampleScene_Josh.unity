@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  jumpHeight: 10
+  jumpHeight: 8
   groundDistance: 1
   isGrounded: 0
   rigid: {fileID: 0}
