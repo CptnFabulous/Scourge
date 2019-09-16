@@ -6,12 +6,15 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 4f;
     public float jumpHeight = 8f;
-    public float groundDistance = 10f;
-    public bool isGrounded;
+    public float groundDistance = 10f; 
     public int jumpCount = 1;
+    public int lives = 3;
+    public int health = 2;
+    public bool isGrounded;
+    public bool playerDead;
     public Rigidbody rigid;
     public Vector3 Velocity = Vector3.zero;
-   
+    public SpawnManager spawnManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,12 @@ public class Player : MonoBehaviour
         {
             jumpCount = 1;
         }
+        if (health == 0)
+        {
+            lives--;
+            health = 2;
+        }
+       
         // cap velocity at 4 or -4 for X and Z, cap at 10 or -10 for Y
 
         //Vector3 clampX = rigid.velocity;
@@ -52,10 +61,7 @@ public class Player : MonoBehaviour
         //  Vector3 fallingSpeed = rigid.velocity.normalized * jumpHeight;
       
     }
-    private void FixedUpdate()
-    {
-       
-    }
+   
     void Movement()
     {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
@@ -109,5 +115,18 @@ public class Player : MonoBehaviour
             Debug.DrawLine(transform.position, hit.point, Color.cyan);
         }
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "DamageZone")
+        {
+            health--;
+        }
+        if (other.gameObject.tag == "DeathZone")
+        {
+            lives--;
+            playerDead = true;
+            Destroy(this.gameObject);
+        }
+    }
+   
 }
