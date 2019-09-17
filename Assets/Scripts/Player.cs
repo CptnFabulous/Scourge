@@ -6,15 +6,11 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 4f;
     public float jumpHeight = 8f;
-    public float groundDistance = 10f; 
-    public int jumpCount = 1;
-    public int lives = 3;
-    public int health = 2;
+    public float groundDistance = 10f;
     public bool isGrounded;
-    public bool playerDead;
     public Rigidbody rigid;
     public Vector3 Velocity = Vector3.zero;
-    public SpawnManager spawnManager;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -24,23 +20,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
 
         if (groundDistance <= 1)
         {
             isGrounded = true;
         }
         else { isGrounded = false; }
-        if (isGrounded == true)
-        {
-            jumpCount = 1;
-        }
-        if (health == 0)
-        {
-            lives--;
-            health = 2;
-        }
-       
+
         // cap velocity at 4 or -4 for X and Z, cap at 10 or -10 for Y
 
         //Vector3 clampX = rigid.velocity;
@@ -56,20 +42,22 @@ public class Player : MonoBehaviour
         //Mathf.Clamp(rigid.velocity.x, 0, maxVelocity.x);
         //Mathf.Clamp(rigid.velocity.y, 0, maxVelocity.y);
         //Mathf.Clamp(rigid.velocity.z, 0, maxVelocity.z);
-       
+        Movement();
+
 
         //  Vector3 fallingSpeed = rigid.velocity.normalized * jumpHeight;
       
     }
-   
+    private void FixedUpdate()
+    {
+       
+    }
     void Movement()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            jumpCount--;
             Mathf.Clamp(transform.up.normalized.y, 0, jumpHeight);
             rigid.AddForce(transform.up.normalized * jumpHeight, ForceMode.Impulse);
-            
         }
         // W
         // add impulse force to transform.forward aslong as the rigidbody.velocity.z is under 4 and W is pressed
@@ -115,18 +103,5 @@ public class Player : MonoBehaviour
             Debug.DrawLine(transform.position, hit.point, Color.cyan);
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "DamageZone")
-        {
-            health--;
-        }
-        if (other.gameObject.tag == "DeathZone")
-        {
-            lives--;
-            playerDead = true;
-            Destroy(this.gameObject);
-        }
-    }
-   
+
 }
