@@ -32,7 +32,5 @@ public class PlayerMovement : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
         //Making the character move
         controller.Move(moveDirection * Time.deltaTime);
-
-        StartCoroutine(cameraShake.Shake(-.05f, .05f));
     }
 }
