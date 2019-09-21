@@ -1348,11 +1348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbb9f8323b83ff46b67fe30ffb3ef0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  albedoSpeedX: 0.1
-  albedoSpeedY: 0.1
+  albedoSpeedX: 0.2
+  albedoSpeedY: 0
   heightSpeedX: 0.5
   heightSpeedY: 0.5
-  parallaxStrength: 0
+  parallaxStrength: 0.18
 --- !u!64 &623094202
 MeshCollider:
   m_ObjectHideFlags: 0
