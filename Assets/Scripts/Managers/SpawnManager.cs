@@ -35,34 +35,34 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         //if player is dead
-        if (player.playerDead == true)
-        {
+        //if (player.playerDead == true)
+        //{
            
-            float minDistance = Mathf.Infinity;
-            // search through playerspawnpoints 
-            for (int i = 0; i < playerSpawnPoints.Count; i++)
-            {
+        //    float minDistance = Mathf.Infinity;
+        //    // search through playerspawnpoints 
+        //    for (int i = 0; i < playerSpawnPoints.Count; i++)
+        //    {
                 
-                // float = distance between selected playerspawnpoint.position and player
-                 distance = Vector3.Distance(playerSpawnPoints[i].position, player.gameObject.transform.position);
+        //        // float = distance between selected playerspawnpoint.position and player
+        //         distance = Vector3.Distance(playerSpawnPoints[i].position, player.gameObject.transform.position);
                 
-                // if the distance is shorter, make that playerspawnpoint the new closestspawnpoint
-                if (distance < minDistance)
-                {
-                    closestSpawnPoint = playerSpawnPoints[i];
-                    // the new mindistance to compare the other spawnpoints to.
-                    minDistance = distance;
-                }
-            }
-            // instantiate player at the closestspawnpoint.position
-            Instantiate(playerPrefab, closestSpawnPoint.position, Quaternion.identity);
-        }
-        if (player.lives == 0)
-        {
-            Instantiate(playerPrefab, playerStartPoint.position, Quaternion.identity);
-            player.health = 2;
-            player.lives = 3;
-            player.playerDead = false;
-        }
+        //        // if the distance is shorter, make that playerspawnpoint the new closestspawnpoint
+        //        if (distance < minDistance)
+        //        {
+        //            closestSpawnPoint = playerSpawnPoints[i];
+        //            // the new mindistance to compare the other spawnpoints to.
+        //            minDistance = distance;
+        //        }
+        //    }
+        //    // instantiate player at the closestspawnpoint.position
+        //    Instantiate(playerPrefab, closestSpawnPoint.position, Quaternion.identity);
+        //}
+        //if (player.lives == 0)
+        //{
+        //    Instantiate(playerPrefab, playerStartPoint.position, Quaternion.identity);
+        //    player.health = 2;
+        //    player.lives = 3;
+        //    player.playerDead = false;
+        //}
     }
 }
