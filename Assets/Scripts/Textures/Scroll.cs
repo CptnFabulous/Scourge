@@ -5,6 +5,7 @@ using UnityEngine;
 public class Scroll : MonoBehaviour
 {
     //scroll speed of textures
+    [Header("ScrollSpeed")]
     [Range(0, 10)]
     public float albedoSpeedX = .1f;
     [Range(0, 10)]
@@ -14,6 +15,7 @@ public class Scroll : MonoBehaviour
     [Range(0, 10)]
     public float heightSpeedY = .1f;
     [Range(0,10)]
+    [Header("Adjustments")]
     public float parallaxStrength;
    
     private void Start()

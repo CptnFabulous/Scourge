@@ -98,6 +98,7 @@ MonoBehaviour:
   reachedDestination: 0
   enemySpeed: 0.1
   waypointCount: 0
+  enemyHealth: 3
 --- !u!65 &8605488301096673183
 BoxCollider:
   m_ObjectHideFlags: 0

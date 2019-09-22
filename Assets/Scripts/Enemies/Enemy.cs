@@ -5,10 +5,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private GameObject enemy;
+    [Header("Waypoints")]
     public List<Transform> enemyWaypoints;
+    [Header("Status")]
     public bool reachedDestination;
     public float enemySpeed;
     public int waypointCount;
+    public float enemyHealth;
     private void Start()
     {
         // get the gameobject this script is attatched to.
@@ -17,6 +20,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #region Movement
         // if the waypointcount goes over the length of the list it is equal to zero
         if (waypointCount >= enemyWaypoints.Count)
         {
@@ -30,7 +34,13 @@ public class Enemy : MonoBehaviour
         }
         // if reachedDestination = false, move the enemy to the targeted waypoint
         else { enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, enemyWaypoints[waypointCount].position, enemySpeed); }
-       
+        #endregion
+        #region
+        if (enemyHealth <= 0)
+        {
+            Destroy(enemy, .3f);
+        }
+        #endregion
     }
     // if the enemy enters a trigger tagged EnemyWayPoint, it will set reachedDestination to true
     private void OnTriggerEnter(Collider other)
@@ -39,7 +49,15 @@ public class Enemy : MonoBehaviour
         {
             reachedDestination = true;
         }
-       
+      
     }
-  
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            --enemyHealth;
+        }
+    }
+
+
 }
