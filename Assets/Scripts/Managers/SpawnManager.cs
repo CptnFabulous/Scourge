@@ -46,6 +46,8 @@ public class SpawnManager : MonoBehaviour
 
         if (lives == 0)
         {
+            Destroy(clone);
+            Debug.Log("player has died for the final time... jk");
             playerDead = false;
             clone = Instantiate(playerPrefab, playerStartPoint.position + spawnNotInFloor, Quaternion.identity);
             lives = 3;
@@ -53,6 +55,7 @@ public class SpawnManager : MonoBehaviour
         if (playerDead == true && lives > 0)
         {       
             Destroy(clone);
+            lives--;
             Debug.Log("player has died");
             // instantiate player at the closestspawnpoint.position
             clone = Instantiate(playerPrefab, closestSpawnPoint.position + spawnNotInFloor, Quaternion.identity);
