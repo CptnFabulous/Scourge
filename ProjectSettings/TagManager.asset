@@ -6,8 +6,7 @@ TagManager:
   tags:
   - PlayerSpawnPoint
   - Pick Up
-  - WayPoint1
-  - WayPoint2
+  - EnemyWayPoint
   layers:
   - Default
   - TransparentFX

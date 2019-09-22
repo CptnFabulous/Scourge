@@ -785,10 +785,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beffc5cfb6d3ecd4b8e6cf33a5cf1c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPoint1: {fileID: 896363240}
-  wayPoint2: {fileID: 563335385}
+  enemyWaypoints:
+  - {fileID: 896363240}
+  - {fileID: 563335385}
   reachedDestination: 0
-  enemy: {fileID: 0}
+  enemySpeed: 0.1
+  waypointCount: 0
 --- !u!23 &223942566
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1417,7 +1419,7 @@ GameObject:
   - component: {fileID: 563335384}
   m_Layer: 0
   m_Name: GameObject (1)
-  m_TagString: WayPoint2
+  m_TagString: EnemyWayPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2257,7 +2259,7 @@ GameObject:
   - component: {fileID: 896363239}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: WayPoint1
+  m_TagString: EnemyWayPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
