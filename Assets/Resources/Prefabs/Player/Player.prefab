@@ -127,6 +127,8 @@ GameObject:
   - component: {fileID: 5233127616345848888}
   - component: {fileID: 5233127616345848885}
   - component: {fileID: 5233127616345848884}
+  - component: {fileID: 6736387147880452659}
+  - component: {fileID: 7095937090946656811}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -255,3 +257,35 @@ MonoBehaviour:
   crouchTime: 0.25
   relativeHeadHeight: 0.375
   toggleCrouch: 1
+--- !u!114 &6736387147880452659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5233127616345848895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce3a02f6c1538594987950e20babfd50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    current: 100
+    max: 100
+    criticalThreshold: 20
+--- !u!114 &7095937090946656811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5233127616345848895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c897c391c2f11694fa8da4b6d19898ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headsUpDisplay: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  winMenu: {fileID: 0}
+  failMenu: {fileID: 0}
