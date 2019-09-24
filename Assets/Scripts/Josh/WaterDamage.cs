@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class WaterDamage : MonoBehaviour
 {
+    public int waterDamage = 1;
+    private Resource resource;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
-        
+        PlayerHealth ph = other.GetComponent<PlayerHealth>();
+        if (ph != null)
+        {
+            ph.Damage(waterDamage);
+        }
     }
 }
