@@ -7,13 +7,34 @@ public class PlayerHealth : Health
 {
     PlayerHandler ph;
 
+    public float invincibilityPeriod;
+    float invincibilityTimer;
+
     public void Awake()
     {
         ph = GetComponent<PlayerHandler>();
     }
 
+    public override void Update()
+    {
+        invincibilityTimer -= Time.deltaTime;
+        base.Update();
+    }
+
+    public override void Damage(int damage)
+    {
+        if (invincibilityPeriod > 0)
+        {
+            return;
+        }
+        base.Damage(damage);
+        invincibilityTimer = invincibilityPeriod;
+    }
+
     public override void Die()
     {
+        invincibilityTimer = 0;
+
         ph.pc.isDead = true;
         ph.gsh.ChangeGameState(GameState.Failed);
     }

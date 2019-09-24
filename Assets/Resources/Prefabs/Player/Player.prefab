@@ -296,6 +296,7 @@ MonoBehaviour:
     current: 3
     max: 3
     critical: 1
+  invincibilityPeriod: 1.5
 --- !u!114 &7095937090946656811
 MonoBehaviour:
   m_ObjectHideFlags: 0
