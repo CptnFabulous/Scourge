@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Water
   m_Shader: {fileID: 4800000, guid: c7a80f84c8468cc4483000ac318320db, type: 3}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _PARALLAXMAP
+  m_ShaderKeywords: _PARALLAXMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -63,25 +63,25 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Direction: 0.48
-    - _DstBlend: 10
+    - _Direction: 0.75
+    - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.218
     - _GlossyReflections: 1
     - _Metallic: 1
-    - _Mode: 3
+    - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.08
     - _ParallaxDirection: 0
     - _ParallaxSpeed: 1.43
-    - _ParallaxStrength: 0.21
+    - _ParallaxStrength: 0.3
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 2
+    - _Speed: 5.7
     - _SrcBlend: 1
     - _UVSec: 0
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0.84705883}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
