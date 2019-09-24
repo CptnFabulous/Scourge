@@ -8,6 +8,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region Public variables
+    public bool isDead;
+
     [Header("Camera control")]
     public GameObject head;
     public Camera playerCamera;
@@ -94,8 +96,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #region Check if dead
+        if (isDead == true)
+        {
+            rb.constraints = RigidbodyConstraints.None;
+            AdjustCamera();
+            return;
+        }
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        #endregion
+
         #region Camera
         LookAngle(new Vector2(Input.GetAxis("Mouse X") * sensitivityX * Time.deltaTime, Input.GetAxis("Mouse Y") * sensitivityY * Time.deltaTime));
+        AdjustCamera();
         #endregion
 
         #region Crouching
@@ -139,15 +152,17 @@ public class PlayerController : MonoBehaviour
         #endregion
     }
 
-    public void LookAngle(Vector2 cameraInput) // This variable is public so it can be altered by other sources such as gun recoil
+    public void LookAngle(Vector2 cameraInput) // This variable is public so it can be altered by other sources such as recoil
     {
         lookVector.x = cameraInput.x;
         lookVector.y -= cameraInput.y;
         lookVector.y = Mathf.Clamp(lookVector.y, minLookAngle, maxLookAngle); // Camera.y is then clamped to ensure it does not move past 90* or 90*, ensuring that the player does not flip the camera over completely.
         transform.Rotate(0, lookVector.x, 0); // Player is rotated on y axis based on Camera.x, for turning left and right
         head.transform.localRotation = Quaternion.Euler(lookVector.y, 0, 0); // Player head is rotated in x axis based on Camera.y, for looking up and down
+    }
 
-
+    void AdjustCamera()
+    {
         float cd;
         if (Physics.SphereCast(head.transform.position, cameraSizeRadius, -head.transform.forward, out terrainBehindPlayer, cameraDistanceFromHead + cameraSizeRadius))
         {
@@ -158,33 +173,11 @@ public class PlayerController : MonoBehaviour
             cd = cameraDistanceFromHead;
         }
         cd = Mathf.Clamp(cd, 0, cameraDistanceFromHead);
-        print(terrainBehindPlayer.distance + "/" + cd);
-        //playerCamera.transform.localPosition = new Vector3(0, 0, -cd);
-
         cd /= cameraDistanceFromHead;
-
         playerCamera.transform.localPosition = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, -cameraDistanceFromHead), cd);
-
-        /*
-        
-        float cd;
-        if (Physics.Raycast(head.transform.position, -transform.forward, out terrainBehindPlayer, cameraDistanceFromHead))
-        {
-            cd = terrainBehindPlayer.distance;
-        }
-        else
-        {
-            cd = cameraDistanceFromHead;
-        }
-        cd = Mathf.Clamp(cd, 0, cameraDistanceFromHead);
-        print(terrainBehindPlayer.distance);
-        playerCamera.transform.localPosition = new Vector3(0, 0, -cd);
-
-        
-        */
+        //playerCamera.transform.localPosition = new Vector3(0, 0, -cd);
     }
 
-    #region Crouch functions
     void HoldOrToggleCrouch()
     {
         if (toggleCrouch == true)
@@ -218,7 +211,6 @@ public class PlayerController : MonoBehaviour
 
         head.transform.localPosition = new Vector3(0, Mathf.Lerp(relativeHeadHeight * standHeight, relativeHeadHeight * crouchHeight, crouchTimer), 0);
     }
-    #endregion
 
     void FixedUpdate()
     {
