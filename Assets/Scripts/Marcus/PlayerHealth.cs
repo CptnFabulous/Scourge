@@ -34,7 +34,6 @@ public class PlayerHealth : Health
     public override void Die()
     {
         invincibilityTimer = 0;
-
         ph.pc.isDead = true;
         ph.gsh.ChangeGameState(GameState.Failed);
     }
