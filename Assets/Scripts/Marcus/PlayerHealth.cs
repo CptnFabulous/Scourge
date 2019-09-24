@@ -18,11 +18,11 @@ public class PlayerHealth : Health
         ph.gsh.ChangeGameState(GameState.Failed);
     }
 
-    public void Respawn()
+    public void Respawn(Transform spawnPoint)
     {
         ph.pc.isDead = false;
-        ph.pc.transform.rotation = Quaternion.Euler(0, transform.rotation.y, 0);
         ph.gsh.ChangeGameState(GameState.Active);
         health.current = health.max;
+        transform.SetPositionAndRotation(spawnPoint.position, Quaternion.Euler(0, spawnPoint.rotation.y, 0));
     }
 }
