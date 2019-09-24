@@ -183,7 +183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2caadfeb45065e4468937792c995ad66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -424,10 +424,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5233127615905628142}
     m_Modifications:
-    - target: {fileID: 1962621099093359234, guid: 73d42d3c34ff16f4eba2f68746c25749,
+    - target: {fileID: 1962621099093359239, guid: 73d42d3c34ff16f4eba2f68746c25749,
         type: 3}
-      propertyPath: m_Name
-      value: HeadsUpDisplay
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 5233127615905628141}
+    - target: {fileID: 1962621099093359239, guid: 73d42d3c34ff16f4eba2f68746c25749,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1962621099093359238, guid: 73d42d3c34ff16f4eba2f68746c25749,
         type: 3}
@@ -534,15 +539,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1962621099093359239, guid: 73d42d3c34ff16f4eba2f68746c25749,
+    - target: {fileID: 1962621099093359234, guid: 73d42d3c34ff16f4eba2f68746c25749,
         type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 5233127615905628141}
-    - target: {fileID: 1962621099093359239, guid: 73d42d3c34ff16f4eba2f68746c25749,
-        type: 3}
-      propertyPath: m_PlaneDistance
-      value: 0.35
+      propertyPath: m_Name
+      value: HeadsUpDisplay
       objectReference: {fileID: 0}
     - target: {fileID: 6956686069062969466, guid: 73d42d3c34ff16f4eba2f68746c25749,
         type: 3}
@@ -587,11 +587,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5233127615905628142}
     m_Modifications:
-    - target: {fileID: 3224478658672111280, guid: 3f395ceac9ab94241b9f3666da10f6bc,
-        type: 3}
-      propertyPath: m_Name
-      value: FailMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 3224478658672111284, guid: 3f395ceac9ab94241b9f3666da10f6bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -707,6 +702,11 @@ PrefabInstance:
       propertyPath: m_PlaneDistance
       value: 0.35
       objectReference: {fileID: 0}
+    - target: {fileID: 3224478658672111280, guid: 3f395ceac9ab94241b9f3666da10f6bc,
+        type: 3}
+      propertyPath: m_Name
+      value: FailMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f395ceac9ab94241b9f3666da10f6bc, type: 3}
 --- !u!224 &1930929698140365662 stripped
@@ -728,10 +728,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5233127615905628142}
     m_Modifications:
-    - target: {fileID: 6256330286314423778, guid: 7065ed694da28f64fa78baa055751de0,
+    - target: {fileID: 6256330286314423783, guid: 7065ed694da28f64fa78baa055751de0,
         type: 3}
-      propertyPath: m_Name
-      value: WinMenu
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 5233127615905628141}
+    - target: {fileID: 6256330286314423783, guid: 7065ed694da28f64fa78baa055751de0,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 6256330286314423782, guid: 7065ed694da28f64fa78baa055751de0,
         type: 3}
@@ -838,15 +843,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6256330286314423783, guid: 7065ed694da28f64fa78baa055751de0,
+    - target: {fileID: 6256330286314423778, guid: 7065ed694da28f64fa78baa055751de0,
         type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 5233127615905628141}
-    - target: {fileID: 6256330286314423783, guid: 7065ed694da28f64fa78baa055751de0,
-        type: 3}
-      propertyPath: m_PlaneDistance
-      value: 0.35
+      propertyPath: m_Name
+      value: WinMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7065ed694da28f64fa78baa055751de0, type: 3}
