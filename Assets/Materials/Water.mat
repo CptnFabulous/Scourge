@@ -21,14 +21,14 @@ Material:
     m_TexEnvs:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: a0669907331772b45a52970e427f7995, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 5, y: 15}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 2800000, guid: f9dec260c68bd03428f4002aa7f1a189, type: 3}
-        m_Scale: {x: 0.25, y: 0.25}
+        m_Scale: {x: 1.25, y: 3.75}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Direction: 0
+    - _Direction: 0.131
     - _Glossiness: 0.5
     - _Metallic: 0
     - _ParallaxDirection: 0

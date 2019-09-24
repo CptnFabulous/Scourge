@@ -369,7 +369,7 @@ MonoBehaviour:
   cameraSizeRadius: 0.3
   movementSpeed: 10
   crouchSpeedMultiplier: 0.5
-  forceJump: 15
+  forceJump: 10
   jumpDelay: 0.1
   groundedRayLength: 0.01
   standHeight: 2
@@ -629,6 +629,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadsUpDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 1962621099093359234, guid: 73d42d3c34ff16f4eba2f68746c25749,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6956686069062969466, guid: 73d42d3c34ff16f4eba2f68746c25749,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -792,6 +797,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FailMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3224478658672111280, guid: 3f395ceac9ab94241b9f3666da10f6bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f395ceac9ab94241b9f3666da10f6bc, type: 3}
 --- !u!224 &1930929698140365662 stripped
@@ -933,6 +943,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6256330286314423778, guid: 7065ed694da28f64fa78baa055751de0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7065ed694da28f64fa78baa055751de0, type: 3}
 --- !u!224 &1052720614100125243 stripped
@@ -958,6 +973,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 256362272776620979, guid: 91aedbcd6d92854448bab55071353f96,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 256362272776620983, guid: 91aedbcd6d92854448bab55071353f96,
         type: 3}

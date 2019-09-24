@@ -12,7 +12,7 @@ public class WaterDamage : MonoBehaviour
         PlayerHealth ph = other.GetComponent<PlayerHealth>();
         if (ph != null)
         {
-            ph.Damage(waterDamage);
+            ph.Damage(waterDamage);         
         }
     }
 }
