@@ -17,18 +17,28 @@ public class GameStateHandler : MonoBehaviour
     public Canvas winMenu;
     public Canvas failMenu;
 
-    GameState state;
+    GameState state = GameState.Active;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ChangeGameState(state);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Pause"))
+        {
+            if (state == GameState.Active)
+            {
+                ChangeGameState(GameState.Paused);
+            }
+            else if (state == GameState.Paused)
+            {
+                ChangeGameState(GameState.Active);
+            }
+        }
     }
 
     public void ChangeGameState(GameState gm)
@@ -50,13 +60,22 @@ public class GameStateHandler : MonoBehaviour
         }
     }
 
+    void DisableMenus()
+    {
+        headsUpDisplay.gameObject.SetActive(false);
+        pauseMenu.gameObject.SetActive(false);
+        winMenu.gameObject.SetActive(false);
+        failMenu.gameObject.SetActive(false);
+    }
+
     void ResumeGame()
     {
         state = GameState.Active;
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        DisableMenus();
         headsUpDisplay.gameObject.SetActive(true);
-        pauseMenu.gameObject.SetActive(false);
     }
 
     void PauseGame()
@@ -64,25 +83,28 @@ public class GameStateHandler : MonoBehaviour
         state = GameState.Paused;
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
-        headsUpDisplay.gameObject.SetActive(false);
+        Cursor.visible = true;
+        DisableMenus();
         pauseMenu.gameObject.SetActive(true);
     }
 
     void Win()
     {
-        ResumeGame();
+        state = GameState.Won;
+        Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.None;
-        headsUpDisplay.gameObject.SetActive(false);
-        pauseMenu.gameObject.SetActive(false);
+        Cursor.visible = true;
+        DisableMenus();
         winMenu.gameObject.SetActive(true);
     }
 
     void Fail()
     {
-        ResumeGame();
+        state = GameState.Failed;
+        Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.None;
-        headsUpDisplay.gameObject.SetActive(false);
-        pauseMenu.gameObject.SetActive(false);
+        Cursor.visible = true;
+        DisableMenus();
         failMenu.gameObject.SetActive(true);
     }
 }

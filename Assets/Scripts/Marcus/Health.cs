@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public Resource health = new Resource { max = 100, current = 100, criticalThreshold = 20 };
+    public Resource health = new Resource { max = 100, current = 100, critical = 20 };
 
+    public virtual void Update()
+    {
+        if (health.current <= 0)
+        {
+            Die();
+        }
+    }
 
     public virtual void Damage(int damage) // Declare Damage() and Heal() from another script to damage or heal the thing with this health script. E.g. enemy.GetComponent<Health>().Damage(attackDamage);
     {

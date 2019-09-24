@@ -7,5 +7,14 @@ public class Resource
 {
     public int current;
     public int max;
-    public float criticalThreshold;
+    public int critical;
+
+    public bool IsCritical()
+    {
+        if (current <= critical)
+        {
+            return true;
+        }
+        return false;
+    }
 }
