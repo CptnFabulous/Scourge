@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemManager : MonoBehaviour
+public class WaterDamage : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -12,6 +12,10 @@ public class ItemManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+    private void OnTriggerEnter(Collider other)
     {
         
     }
