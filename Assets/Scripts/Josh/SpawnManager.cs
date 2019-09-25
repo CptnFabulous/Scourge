@@ -12,8 +12,7 @@ public class SpawnManager : MonoBehaviour
     public List<GameObject> enemies;
     public GameObject playerPrefab;
     GameObject clone;
-    [Header("PlayerInfo")]
-    
+    [Header("PlayerInfo")]  
     public float distance;
     Vector3 spawnNotInFloor = new Vector3(0, 1, 0);
     // ref to markus's scripts
@@ -43,13 +42,14 @@ public class SpawnManager : MonoBehaviour
         // spawn player at playerstartpoint's position with no rotation
         clone = Instantiate(playerPrefab, playerStartPoint.position + spawnNotInFloor, Quaternion.identity);
     }
-
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         // call function
         GetClosestSpawnPoint();
-
+    }
+    // Update is called once per frame
+    void Update()
+    {            
         // if the lives current in the health script is 0 
         if (h.lives.current == 0)
         {
@@ -89,14 +89,14 @@ public class SpawnManager : MonoBehaviour
                 MinDistance = distanceToTarget;
                 // set closestspawnpoint to be the searched spawnpoint
                 closestSpawnPoint = potentialSpawn;
-                // dont spawn in the floor
+                // for debug purposes
                 distance = distanceToTarget;
                
             }
           
         }
         // return the new closestspawnpoint to exit
-        Debug.Log(closestSpawnPoint.ToString());
+        //Debug.Log(closestSpawnPoint.ToString());
         return closestSpawnPoint;
 
     }

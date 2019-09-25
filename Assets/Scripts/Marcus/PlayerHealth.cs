@@ -50,4 +50,5 @@ public class PlayerHealth : Health
         health.current = health.max;
         transform.SetPositionAndRotation(spawnPoint.position, Quaternion.Euler(0, spawnPoint.rotation.y, 0));
     }
+    
 }

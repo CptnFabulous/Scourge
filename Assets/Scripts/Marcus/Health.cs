@@ -25,8 +25,7 @@ public class Health : MonoBehaviour
     }
 
     public virtual void Die() // Override this to include functions such as death animations, game over screen etc.
-    {
-       
+    {      
         Destroy(gameObject);
     }
 
