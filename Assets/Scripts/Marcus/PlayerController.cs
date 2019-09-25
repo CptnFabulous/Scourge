@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region Public variables
+    [HideInInspector]
     public bool isDead;
 
     [Header("Camera control")]

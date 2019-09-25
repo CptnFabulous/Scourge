@@ -5,7 +5,6 @@ using UnityEngine;
 public class WaterDamage : MonoBehaviour
 {
     public int waterDamage = 1;
-    private Resource resource;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {

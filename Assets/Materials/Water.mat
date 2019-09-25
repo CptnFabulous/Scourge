@@ -28,12 +28,12 @@ Material:
         m_Scale: {x: 1.25, y: 3.75}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Direction: 0.131
+    - _Direction: 0.44
     - _Glossiness: 0.5
     - _Metallic: 0
-    - _ParallaxDirection: 0
+    - _ParallaxDirection: 0.67
     - _ParallaxSpeed: 1
-    - _ParallaxStrength: 0.3
+    - _ParallaxStrength: 0.2
     - _Speed: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

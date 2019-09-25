@@ -11,12 +11,15 @@ public class SpawnManager : MonoBehaviour
     [Header("Instantiated Entities")]
     public List<GameObject> enemies;
     public GameObject playerPrefab;
-     GameObject clone;
+    GameObject clone;
     [Header("PlayerInfo")]
-    public bool playerDead = false;
+    
     public float distance;
-    public int lives = 3;
-    Vector3 spawnNotInFloor = new Vector3 (0, 1, 0);
+    Vector3 spawnNotInFloor = new Vector3(0, 1, 0);
+    // ref to markus's scripts
+    public PlayerHealth ph;
+    public Health h;
+    public PlayerController playercon;
     private void Awake()
     {
         // search through all object with tag
@@ -24,16 +27,19 @@ public class SpawnManager : MonoBehaviour
         {
             // add object transforms to the list
             playerSpawnPoints.Add(go.GetComponent<Transform>());
+
         }
         // get the player prefab in the assest/resources/prefabs/player folders
         playerPrefab = (GameObject)Resources.Load("Prefabs/Player/Player", typeof(GameObject));
+        
     }
     // Start is called before the first frame update
     void Start()
     {
-
         // first transform in list (first in heirarchy) == the player start point
         playerStartPoint = playerSpawnPoints[0];
+        playerStartPoint.position = playerStartPoint.position + spawnNotInFloor;
+
         // spawn player at playerstartpoint's position with no rotation
         clone = Instantiate(playerPrefab, playerStartPoint.position + spawnNotInFloor, Quaternion.identity);
     }
@@ -44,22 +50,24 @@ public class SpawnManager : MonoBehaviour
         // call function
         GetClosestSpawnPoint();
 
-        if (lives == 0)
+        // if the lives current in the health script is 0 
+        if (h.lives.current == 0)
         {
-            Destroy(clone);
+            // player dies and loses a life
+            ph.Die();
             Debug.Log("player has died for the final time... jk");
-            playerDead = false;
-            clone = Instantiate(playerPrefab, playerStartPoint.position + spawnNotInFloor, Quaternion.identity);
-            lives = 3;
+            // respawn player at the playerstartpoint.position   
+            ph.Respawn(playerStartPoint);
+
         }
-        if (playerDead == true && lives > 0)
-        {       
-            Destroy(clone);
-            lives--;
+        // if the player has died but has more than 0 lives
+        if (playercon.isDead == true && h.lives.current > 0)
+        {
+            // player dies and loses a life
+            ph.Die();
+            // respawn player at the closestspawnpoint.position   
+            ph.Respawn(closestSpawnPoint);
             Debug.Log("player has died");
-            // instantiate player at the closestspawnpoint.position
-            clone = Instantiate(playerPrefab, closestSpawnPoint.position + spawnNotInFloor, Quaternion.identity);
-            playerDead = false;
         }
     }
     // returns a transform (The closest spawnpoint to the player)
@@ -73,18 +81,25 @@ public class SpawnManager : MonoBehaviour
             // a v3 coordinate equal to the value of the v3 of the spawnpoint it has searched - the players v3 position
             Vector3 directionToTarget = potentialSpawn.position - clone.transform.position;
             // distance float is equal to the v3 coord squared so it can be 1 value.
-            distance = directionToTarget.sqrMagnitude;
+           float distanceToTarget = directionToTarget.sqrMagnitude;
             // if the distance between the player and the searched spawnpoint is less than infinity, 
-            if (distance < MinDistance)
+            if (distanceToTarget < MinDistance)
             {
                 //set the originally infinite float to equal the distance between the player and the searched spawnpoint
-                MinDistance = distance;
+                MinDistance = distanceToTarget;
                 // set closestspawnpoint to be the searched spawnpoint
-               closestSpawnPoint = potentialSpawn;
+                closestSpawnPoint = potentialSpawn;
+                // dont spawn in the floor
+                distance = distanceToTarget;
+               
             }
-        }      
+          
+        }
         // return the new closestspawnpoint to exit
+        Debug.Log(closestSpawnPoint.ToString());
         return closestSpawnPoint;
-        
+
     }
+
+
 }

@@ -35,13 +35,18 @@ public class PlayerHealth : Health
     {
         invincibilityTimer = 0;
         ph.pc.isDead = true;
+        --lives.current;
         ph.gsh.ChangeGameState(GameState.Failed);
     }
 
     public void Respawn(Transform spawnPoint)
     {
-        ph.pc.isDead = false;
+        ph.pc.isDead = false;     
         ph.gsh.ChangeGameState(GameState.Active);
+        if (lives.current == 0)
+        {
+            lives.current = lives.max;
+        }
         health.current = health.max;
         transform.SetPositionAndRotation(spawnPoint.position, Quaternion.Euler(0, spawnPoint.rotation.y, 0));
     }
