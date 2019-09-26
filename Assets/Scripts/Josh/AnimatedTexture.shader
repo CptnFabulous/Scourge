@@ -26,7 +26,7 @@
     SubShader
     {
 	// render transparency
-        Tags { "Queue"="Transparent+1000" "RenderType"="Transparent" }
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
         LOD 200
 
 		Blend SrcAlpha OneMinusSrcAlpha
