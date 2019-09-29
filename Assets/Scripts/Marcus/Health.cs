@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public Resource health = new Resource { max = 100, current = 100, critical = 20 };
-    public Resource lives = new Resource { max = 3,current = 3 , critical = 1};
+    public Resource health = new Resource { max = 3, current = 3, critical = 1 };
     public virtual void Update()
     {
         if (health.current <= 0)

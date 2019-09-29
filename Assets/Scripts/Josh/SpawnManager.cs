@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour
     [Header("PlayerInfo")]  
     public float distance;
     Vector3 spawnNotInFloor = new Vector3(0, 1, 0);
-    // ref to markus's scripts
+    // ref to marcus's scripts
     public PlayerHealth ph;
     public Health h;
     public PlayerController playercon;
@@ -50,8 +50,9 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {            
+        /* // This stuff happening in Update() is commented out for now so I can test stuff
         // if the lives current in the health script is 0 
-        if (h.lives.current == 0)
+        if (ph.lives.current == 0)
         {
             // player dies and loses a life
             ph.Die();
@@ -61,7 +62,7 @@ public class SpawnManager : MonoBehaviour
 
         }
         // if the player has died but has more than 0 lives
-        if (playercon.isDead == true && h.lives.current > 0)
+        if (playercon.isDead == true && ph.lives.current > 0)
         {
             // player dies and loses a life
             ph.Die();
@@ -69,6 +70,7 @@ public class SpawnManager : MonoBehaviour
             ph.Respawn(closestSpawnPoint);
             Debug.Log("player has died");
         }
+        */
     }
     // returns a transform (The closest spawnpoint to the player)
     Transform GetClosestSpawnPoint()

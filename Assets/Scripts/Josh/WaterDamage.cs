@@ -13,7 +13,7 @@ public class WaterDamage : MonoBehaviour
         ph = other.GetComponent<PlayerHealth>();
         if (other.tag == "Player")
         {
-            ph.Update();
+            //ph.Update(); // This is unnecessary
             Debug.Log("i should be damaging the player");         
             ph.Damage(waterDamage);           
         }
